@@ -1,11 +1,11 @@
 // PathMem Service Worker
-const CACHE_NAME = 'pathmem-v1';
+const CACHE_NAME = 'pathmem-v2';
 const ASSETS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/icons/icon-192.png',
-    '/icons/icon-512.png'
+    './',
+    './index.html',
+    './manifest.json',
+    './icons/icon-192.png',
+    './icons/icon-512.png'
 ];
 
 // Install event - cache assets
@@ -72,7 +72,7 @@ self.addEventListener('fetch', (event) => {
                     })
                     .catch(() => {
                         // Network failed, return offline page if available
-                        return caches.match('/index.html');
+                        return caches.match('./index.html');
                     });
             })
     );
@@ -122,7 +122,7 @@ self.addEventListener('notificationclick', (event) => {
                 }
                 // Otherwise open new window
                 if (clients.openWindow) {
-                    return clients.openWindow('/');
+                    return clients.openWindow('./index.html');
                 }
             })
     );
